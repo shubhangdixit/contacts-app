@@ -31,6 +31,23 @@ class Contact: NSObject {
         if (contactId ?? 0) % 5 == 0 {
             favorite = true
         }
+        phoneNumber = ""
+        email = ""
+    }
+    
+    func updateDetails(withDictionary dictionary : [String: Any]) {
+        firstName = dictionary[contactsJsonKeys.firstNameKey] as? String
+        firstName = firstName?.capitalized
+        lastName = dictionary[contactsJsonKeys.lastNameKey] as? String
+        lastName = lastName?.capitalized
+        contactId = dictionary[contactsJsonKeys.contactIDKey] as? Int
+        //favorite = dictionary[contactsJsonKeys.favoriteContactKey] as? Bool ?? false
+        profilePicUrl = dictionary[contactsJsonKeys.profilePicURLKey] as? String
+        if (contactId ?? 0) % 5 == 0 {
+            favorite = true
+        }
+        phoneNumber = dictionary[contactsJsonKeys.phoneNumberKey] as? String
+        email = dictionary[contactsJsonKeys.emailKey] as? String
     }
     
     func getContactCharacterGroup() -> Character {

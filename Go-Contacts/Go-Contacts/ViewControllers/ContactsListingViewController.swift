@@ -17,6 +17,11 @@ class ContactsListingViewController: UIViewController, UITableViewDelegate, UITa
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
+        
+        self.title = " Contact "
+        let addContactBarButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewContact))
+        self.navigationItem.rightBarButtonItem = addContactBarButton
+        
         // Do any additional setup after loading the view.
         ContactManager.shared.fetchContactsList(success: {[weak self] in
             DispatchQueue.main.async {
@@ -30,6 +35,10 @@ class ContactsListingViewController: UIViewController, UITableViewDelegate, UITa
             label.text = error.debugDescription
             self?.view.addSubview(label)
         }
+    }
+    
+    @objc func addNewContact() {
+        
     }
     
     // MARK: table view functions
@@ -76,5 +85,14 @@ class ContactsListingViewController: UIViewController, UITableViewDelegate, UITa
     func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
         let sectionAphabet : Character = title.first ?? "#"
         return ContactManager.shared.characterGroups.firstIndex(of : sectionAphabet) ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let contact = ContactManager.shared.getContact(withAlphanetIndex: indexPath.section, andContactIndex: indexPath.row) {
+            if let viewController : ContactDetailViewController = self.storyboard?.instantiateViewController(withIdentifier: "ContactDetailViewController") as? ContactDetailViewController {
+                viewController.contact = contact
+                self.navigationController?.pushViewController(viewController, animated: true)
+            }
+        }
     }
 }

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		212525CE22D7ACD600D6309A /* ContactDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212525CD22D7ACD600D6309A /* ContactDetailViewController.swift */; };
+		212525D022D7DEC600D6309A /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212525CF22D7DEC600D6309A /* UIViewControllerExtension.swift */; };
 		21872A9122D65BC5002DCFC0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21872A9022D65BC5002DCFC0 /* AppDelegate.swift */; };
 		21872A9322D65BC5002DCFC0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21872A9222D65BC5002DCFC0 /* ViewController.swift */; };
 		21872A9622D65BC5002DCFC0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21872A9422D65BC5002DCFC0 /* Main.storyboard */; };
@@ -42,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		212525CD22D7ACD600D6309A /* ContactDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailViewController.swift; sourceTree = "<group>"; };
+		212525CF22D7DEC600D6309A /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		21872A8D22D65BC5002DCFC0 /* Go-Contacts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Go-Contacts.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		21872A9022D65BC5002DCFC0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		21872A9222D65BC5002DCFC0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -169,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				21872ACA22D689A2002DCFC0 /* UIImageViewExtension.swift */,
+				212525CF22D7DEC600D6309A /* UIViewControllerExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -177,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				21872ACE22D68E68002DCFC0 /* ContactsListingViewController.swift */,
+				212525CD22D7ACD600D6309A /* ContactDetailViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -336,6 +342,8 @@
 				21872A9322D65BC5002DCFC0 /* ViewController.swift in Sources */,
 				21872A9122D65BC5002DCFC0 /* AppDelegate.swift in Sources */,
 				21872ACF22D68E68002DCFC0 /* ContactsListingViewController.swift in Sources */,
+				212525D022D7DEC600D6309A /* UIViewControllerExtension.swift in Sources */,
+				212525CE22D7ACD600D6309A /* ContactDetailViewController.swift in Sources */,
 				21872AD222D690AB002DCFC0 /* ContactManager.swift in Sources */,
 				21872AC322D67A14002DCFC0 /* Constants.swift in Sources */,
 			);
@@ -512,15 +520,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 849UP4BSN8;
 				INFOPLIST_FILE = "Go-Contacts/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.shubhang.Go-Contacts";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ymedialabs.devteam;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "Dev Team";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -530,15 +540,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 849UP4BSN8;
 				INFOPLIST_FILE = "Go-Contacts/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.shubhang.Go-Contacts";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ymedialabs.devteam;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "Dev Team";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

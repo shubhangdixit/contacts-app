@@ -35,5 +35,25 @@ class NetworkManager {
         task.resume()
     }
     
+    func getContactDetail(forID id : Int, success: @escaping successBlock, failure: @escaping failureBlock) {
+        var url : String = "https://gojek-contacts-app.herokuapp.com/contacts/"
+        url = url + String(id) + ".json"
+        let request: NSMutableURLRequest = NSMutableURLRequest(url: NSURL(string: url)! as URL)
+        request.httpMethod = "GET"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let session = URLSession.shared
+        let task = session.dataTask(with: request as URLRequest, completionHandler: {data, response, error -> Void in
+            if let apiError = error {
+                failure(apiError)
+            } else {
+                if let result = data {
+                    success(result)
+                }
+            }
+        })
+        task.resume()
+    }
+    
 }
 

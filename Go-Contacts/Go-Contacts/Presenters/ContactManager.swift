@@ -39,6 +39,28 @@ class ContactManager {
         }
     }
     
+    func fetchDetails(forContact contact: Contact, success: @escaping (Contact) -> Void, failure: @escaping (Error?)-> Void) {
+        guard let contactID = contact.contactId else {
+            failure(nil)
+            return
+        }
+        let detailContact = contact
+        NetworkManager.shared.getContactDetail(forID: contactID, success: { data in
+            do {
+                if let parsedData = try JSONSerialization.jsonObject(with: data!) as? [String:Any] {
+                    detailContact.updateDetails(withDictionary: parsedData)
+                    success(detailContact)
+                } else {
+                    failure(nil)
+                }
+            } catch let error as NSError {
+                failure(error)
+            }
+        }) { error in
+            failure(error)
+        }
+    }
+    
     func initializeContactCharacterGroups() {
         let tempArrayOfKey = Array(contacts.keys)
         characterGroups = tempArrayOfKey.sorted { $0 < $1 }
