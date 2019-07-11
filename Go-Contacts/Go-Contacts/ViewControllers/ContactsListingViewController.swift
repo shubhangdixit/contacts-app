@@ -7,3 +7,22 @@
 //
 
 import Foundation
+import UIKit
+
+class ContactsListingViewController: UIViewController {
+    
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var sliderPickerView: UIPickerView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+        ContactManager.shared.fetchContactsList(success: {
+            
+        }) { error in
+            
+        }
+    }
+    
+    
+}

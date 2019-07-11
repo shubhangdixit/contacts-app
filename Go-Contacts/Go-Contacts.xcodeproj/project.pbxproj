@@ -14,6 +14,14 @@
 		21872A9B22D65BC7002DCFC0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21872A9922D65BC7002DCFC0 /* LaunchScreen.storyboard */; };
 		21872AA622D65BC7002DCFC0 /* Go_ContactsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21872AA522D65BC7002DCFC0 /* Go_ContactsTests.swift */; };
 		21872AB122D65BC7002DCFC0 /* Go_ContactsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21872AB022D65BC7002DCFC0 /* Go_ContactsUITests.swift */; };
+		21872AC122D6750E002DCFC0 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21872AC022D6750E002DCFC0 /* Contact.swift */; };
+		21872AC322D67A14002DCFC0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21872AC222D67A14002DCFC0 /* Constants.swift */; };
+		21872AC622D6874C002DCFC0 /* HeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21872AC522D6874C002DCFC0 /* HeaderCell.swift */; };
+		21872AC822D687B9002DCFC0 /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21872AC722D687B9002DCFC0 /* ContactCell.swift */; };
+		21872ACB22D689A2002DCFC0 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21872ACA22D689A2002DCFC0 /* UIImageViewExtension.swift */; };
+		21872ACF22D68E68002DCFC0 /* ContactsListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21872ACE22D68E68002DCFC0 /* ContactsListingViewController.swift */; };
+		21872AD222D690AB002DCFC0 /* ContactManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21872AD122D690AB002DCFC0 /* ContactManager.swift */; };
+		21872AD522D6914D002DCFC0 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21872AD422D6914D002DCFC0 /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +55,14 @@
 		21872AAC22D65BC7002DCFC0 /* Go-ContactsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Go-ContactsUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		21872AB022D65BC7002DCFC0 /* Go_ContactsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Go_ContactsUITests.swift; sourceTree = "<group>"; };
 		21872AB222D65BC7002DCFC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		21872AC022D6750E002DCFC0 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		21872AC222D67A14002DCFC0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		21872AC522D6874C002DCFC0 /* HeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCell.swift; sourceTree = "<group>"; };
+		21872AC722D687B9002DCFC0 /* ContactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
+		21872ACA22D689A2002DCFC0 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
+		21872ACE22D68E68002DCFC0 /* ContactsListingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsListingViewController.swift; sourceTree = "<group>"; };
+		21872AD122D690AB002DCFC0 /* ContactManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactManager.swift; sourceTree = "<group>"; };
+		21872AD422D6914D002DCFC0 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +113,12 @@
 		21872A8F22D65BC5002DCFC0 /* Go-Contacts */ = {
 			isa = PBXGroup;
 			children = (
+				21872AD322D6912F002DCFC0 /* NetworkServices */,
+				21872AD022D69093002DCFC0 /* Presenters */,
+				21872ACD22D68E35002DCFC0 /* ViewControllers */,
+				21872AC922D68986002DCFC0 /* Extensions */,
+				21872AC422D6872F002DCFC0 /* TableViewCells */,
+				21872ABE22D674D1002DCFC0 /* models */,
 				21872A9022D65BC5002DCFC0 /* AppDelegate.swift */,
 				21872A9222D65BC5002DCFC0 /* ViewController.swift */,
 				21872A9422D65BC5002DCFC0 /* Main.storyboard */,
@@ -123,6 +145,56 @@
 				21872AB222D65BC7002DCFC0 /* Info.plist */,
 			);
 			path = "Go-ContactsUITests";
+			sourceTree = "<group>";
+		};
+		21872ABE22D674D1002DCFC0 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				21872AC022D6750E002DCFC0 /* Contact.swift */,
+				21872AC222D67A14002DCFC0 /* Constants.swift */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		21872AC422D6872F002DCFC0 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				21872AC522D6874C002DCFC0 /* HeaderCell.swift */,
+				21872AC722D687B9002DCFC0 /* ContactCell.swift */,
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
+		21872AC922D68986002DCFC0 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				21872ACA22D689A2002DCFC0 /* UIImageViewExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		21872ACD22D68E35002DCFC0 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				21872ACE22D68E68002DCFC0 /* ContactsListingViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		21872AD022D69093002DCFC0 /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				21872AD122D690AB002DCFC0 /* ContactManager.swift */,
+			);
+			path = Presenters;
+			sourceTree = "<group>";
+		};
+		21872AD322D6912F002DCFC0 /* NetworkServices */ = {
+			isa = PBXGroup;
+			children = (
+				21872AD422D6914D002DCFC0 /* NetworkManager.swift */,
+			);
+			path = NetworkServices;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,8 +328,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21872AC822D687B9002DCFC0 /* ContactCell.swift in Sources */,
+				21872ACB22D689A2002DCFC0 /* UIImageViewExtension.swift in Sources */,
+				21872AD522D6914D002DCFC0 /* NetworkManager.swift in Sources */,
+				21872AC122D6750E002DCFC0 /* Contact.swift in Sources */,
+				21872AC622D6874C002DCFC0 /* HeaderCell.swift in Sources */,
 				21872A9322D65BC5002DCFC0 /* ViewController.swift in Sources */,
 				21872A9122D65BC5002DCFC0 /* AppDelegate.swift in Sources */,
+				21872ACF22D68E68002DCFC0 /* ContactsListingViewController.swift in Sources */,
+				21872AD222D690AB002DCFC0 /* ContactManager.swift in Sources */,
+				21872AC322D67A14002DCFC0 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

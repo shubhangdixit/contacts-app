@@ -7,3 +7,13 @@
 //
 
 import Foundation
+
+struct ContactsJsonKeys {
+    let contactIDKey : String = "id"
+    let firstNameKey : String = "first_name"
+    let lastNameKey : String = "last_name"
+    let emailKey : String = "email"
+    let phoneNumberKey : String = "phone_number"
+    let profilePicURLKey : String = "profile_pic"
+    let favoriteContactKey : String = "favorite"
+}

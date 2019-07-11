@@ -7,3 +7,15 @@
 //
 
 import Foundation
+import UIKit
+
+class HeaderCell: UITableViewCell {
+    
+    @IBOutlet weak var alphabetSectionLabel: UILabel!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+    }
+    
+}
