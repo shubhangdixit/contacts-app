@@ -18,16 +18,16 @@ class Contact: NSObject {
     var phoneNumber : String?
     var profilePicUrl : String?
     
-    let contactsJsonKeys = ContactsJsonKeys()
+    static let contactsJsonKeys = ContactsJsonKeys()
     
     init(withDictionary dictionary : [String: Any]) {
-        firstName = dictionary[contactsJsonKeys.firstNameKey] as? String
+        firstName = dictionary[Contact.contactsJsonKeys.firstNameKey] as? String
         firstName = firstName?.capitalized
-        lastName = dictionary[contactsJsonKeys.lastNameKey] as? String
+        lastName = dictionary[Contact.contactsJsonKeys.lastNameKey] as? String
         lastName = lastName?.capitalized
-        contactId = dictionary[contactsJsonKeys.contactIDKey] as? Int
+        contactId = dictionary[Contact.contactsJsonKeys.contactIDKey] as? Int
         //favorite = dictionary[contactsJsonKeys.favoriteContactKey] as? Bool ?? false
-        profilePicUrl = dictionary[contactsJsonKeys.profilePicURLKey] as? String
+        profilePicUrl = dictionary[Contact.contactsJsonKeys.profilePicURLKey] as? String
         if (contactId ?? 0) % 5 == 0 {
             favorite = true
         }
@@ -36,18 +36,18 @@ class Contact: NSObject {
     }
     
     func updateDetails(withDictionary dictionary : [String: Any]) {
-        firstName = dictionary[contactsJsonKeys.firstNameKey] as? String
+        firstName = dictionary[Contact.contactsJsonKeys.firstNameKey] as? String
         firstName = firstName?.capitalized
-        lastName = dictionary[contactsJsonKeys.lastNameKey] as? String
+        lastName = dictionary[Contact.contactsJsonKeys.lastNameKey] as? String
         lastName = lastName?.capitalized
-        contactId = dictionary[contactsJsonKeys.contactIDKey] as? Int
+        contactId = dictionary[Contact.contactsJsonKeys.contactIDKey] as? Int
         //favorite = dictionary[contactsJsonKeys.favoriteContactKey] as? Bool ?? false
-        profilePicUrl = dictionary[contactsJsonKeys.profilePicURLKey] as? String
+        profilePicUrl = dictionary[Contact.contactsJsonKeys.profilePicURLKey] as? String
         if (contactId ?? 0) % 5 == 0 {
             favorite = true
         }
-        phoneNumber = dictionary[contactsJsonKeys.phoneNumberKey] as? String
-        email = dictionary[contactsJsonKeys.emailKey] as? String
+        phoneNumber = dictionary[Contact.contactsJsonKeys.phoneNumberKey] as? String
+        email = dictionary[Contact.contactsJsonKeys.emailKey] as? String
     }
     
     func getContactCharacterGroup() -> Character {
@@ -61,4 +61,23 @@ class Contact: NSObject {
         }
     }
     
+    func getDictionary() -> [String : Any] {
+        var contactDictionary : [String:Any] = [:]
+        contactDictionary[Contact.contactsJsonKeys.firstNameKey] = firstName
+        contactDictionary[Contact.contactsJsonKeys.lastNameKey] = lastName
+        contactDictionary[Contact.contactsJsonKeys.emailKey] = email
+        contactDictionary[Contact.contactsJsonKeys.phoneNumberKey] = phoneNumber
+        return contactDictionary
+    }
+    
+    class func getDictionaryForContact(withFirstName firstName: String, lastName :String, email: String, phoneNumber : String, imageURL: String) -> [String : Any] {
+        var contactDictionary : [String:Any] = [:]
+        contactDictionary[contactsJsonKeys.firstNameKey] = firstName
+        contactDictionary[contactsJsonKeys.lastNameKey] = lastName
+        contactDictionary[contactsJsonKeys.emailKey] = email
+        contactDictionary[contactsJsonKeys.phoneNumberKey] = phoneNumber
+        contactDictionary[contactsJsonKeys.favoriteContactKey] = 0
+        contactDictionary[contactsJsonKeys.profilePicURLKey] = imageURL
+        return contactDictionary
+    }
 }

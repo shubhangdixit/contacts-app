@@ -10,7 +10,11 @@ import Foundation
 import UIKit
 import MessageUI
 
-class ContactDetailViewController: UIViewController, MFMessageComposeViewControllerDelegate, MFMailComposeViewControllerDelegate {
+protocol EditContactProtocol : class {
+    func contactDidUpdate(withUpdatedValue contact : Contact)
+}
+
+class ContactDetailViewController: UIViewController, MFMessageComposeViewControllerDelegate, MFMailComposeViewControllerDelegate, EditContactProtocol {
     
     var contact : Contact?
     
@@ -29,6 +33,8 @@ class ContactDetailViewController: UIViewController, MFMessageComposeViewControl
         // Do any additional setup after loading the view.
         profilePhotoImageView.layer.masksToBounds = true
         profilePhotoImageView.layer.cornerRadius = profilePhotoImageView.frame.width/2
+        let editButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editButtonAction))
+        self.navigationItem.rightBarButtonItem = editButton
         dropGradient()
         loadContactDetails()
     }
@@ -78,6 +84,17 @@ class ContactDetailViewController: UIViewController, MFMessageComposeViewControl
         mobileNumberLabel.text = detailContact.phoneNumber
     }
     
+    // Mark: Nav Bar Buttons
+    
+    @objc func editButtonAction() {
+        if let viewController : EditContactViewController = self.storyboard?.instantiateViewController(withIdentifier: "EditContactViewController") as? EditContactViewController {
+            viewController.isEditingContact = true
+            viewController.contact = self.contact
+            viewController.delegate = self
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
+    }
+    
     // MARK: Button actions
     
     @IBAction func messageButtonAction(_ sender: Any) {
@@ -122,7 +139,14 @@ class ContactDetailViewController: UIViewController, MFMessageComposeViewControl
     @IBAction func favoriteButtonAction(_ sender: Any) {
     }
     
-    //message UI delegate functions
+    //MARK: EditContactProtocol
+    
+    func contactDidUpdate(withUpdatedValue contact: Contact) {
+        self.contact = contact
+        fillContactDetails(forContact: contact)
+    }
+    
+    //MARK: message UI delegate functions
     
     func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
         self.dismiss(animated: true, completion: nil)

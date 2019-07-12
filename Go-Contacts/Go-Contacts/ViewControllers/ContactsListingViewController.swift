@@ -12,6 +12,7 @@ import UIKit
 class ContactsListingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,24 +22,38 @@ class ContactsListingViewController: UIViewController, UITableViewDelegate, UITa
         self.title = " Contact "
         let addContactBarButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewContact))
         self.navigationItem.rightBarButtonItem = addContactBarButton
-        
-        // Do any additional setup after loading the view.
-        ContactManager.shared.fetchContactsList(success: {[weak self] in
-            DispatchQueue.main.async {
-                self?.tableView.reloadData()
-            }
-            
-        }) {[weak self] error in
-            let label = UILabel(frame: CGRect(x: 0, y: 0, width: 150, height: 50))
-            label.center = self?.view.center ?? CGPoint(x: 0, y: 0)
-            label.textAlignment = NSTextAlignment.center
-            label.text = error.debugDescription
-            self?.view.addSubview(label)
+        self.view.bringSubviewToFront(activityIndicator)
+        activityIndicator.startAnimating()
+        loadContacts()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if ContactManager.shared.contactDataDidChange {
+            tableView.reloadData()
+            ContactManager.shared.contactDataDidChange = false
         }
     }
     
+    func loadContacts() {
+        ContactManager.shared.fetchContactsList(success: {[weak self] in
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+                self?.activityIndicator.stopAnimating()
+            }
+            
+        }) {[weak self] error in
+            self?.showAlertMsg(title: "Error", message: error.debugDescription)
+        }
+    }
+    
+    // MARK: Nav Bar Button Action
+    
     @objc func addNewContact() {
-        
+        if let viewController : EditContactViewController = self.storyboard?.instantiateViewController(withIdentifier: "EditContactViewController") as? EditContactViewController {
+            viewController.isEditingContact = false
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
     }
     
     // MARK: table view functions
